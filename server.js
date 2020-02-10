@@ -15,10 +15,14 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/budget", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    "mongodb://user:password1@ds063177.mlab.com:63177/heroku_q65m5v1q",
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false
+  }
+);
 
 // routes here
 // require("./routes/api")(app);
